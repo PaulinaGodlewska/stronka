@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paulina Godlewska - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Paulina Godlewska - Architektura & Wizja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
         /* Reset i podstawowe style */
         * {
@@ -13,91 +13,168 @@
             box-sizing: border-box;
         }
 
-        body {
+        body, html {
+            height: 100%;
             font-family: 'Inter', sans-serif;
-            background-color: #f0f7ff; /* Bardzo jasny błękit */
-            color: #1a365d; /* Ciemny granat dla czytelności */
+            color: #0f172a; /* Bardzo ciemny granat */
+            overflow: hidden; /* Zapobiega scrollowaniu przy animacji */
+        }
+
+        /* --- TŁO Z BUDYNKIEM (Le Corbusier) --- */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Używamy SVG lub przezroczystego PNG. To jest przykładowy link do szkicu Villa Savoye */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Villa_Savoye_drawing.svg');
+            background-size: 80%; /* Budynek jest duży, ale nie na całe tło */
+            background-repeat: no-repeat;
+            background-position: center 80%; /* Przesunięty lekko w dół */
+            opacity: 0.04; /* BARDZO blady, ledwo widoczny */
+            filter: grayscale(100%) sepia(100%) hue-rotate(190deg) saturate(500%); /* Nadaje niebieski odcień szkicowi */
+            z-index: -1;
+        }
+
+        /* --- GRADIENTOWE TŁO BŁĘKITNE --- */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            z-index: -2;
+        }
+
+        /* Kontener główny */
+        .main-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            line-height: 1.6;
+            padding: 2rem;
         }
 
-        /* Kontener główny */
         .container {
             text-align: center;
-            padding: 2rem;
-            max-width: 600px;
+            max-width: 750px;
+            background: rgba(255, 255, 255, 0.6); /* Półprzezroczyste białe tło pod tekstem dla czytelności */
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px); /* Delikatne rozmycie tła */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        /* Imię i nazwisko */
+        /* Imię i nazwisko - Fancy */
         h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
             letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-            color: #2b6cb0; /* Klasyczny niebieski */
+            color: #0369a1; /* Głęboki, profesjonalny niebieski */
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #0c4a6e;
+            margin-bottom: 2rem;
         }
 
         /* Linia dekoracyjna */
         .divider {
-            width: 50px;
-            height: 3px;
-            background-color: #63b3ed; /* Jasny błękit */
-            margin: 0 auto 2rem;
-            border-radius: 2px;
+            width: 60px;
+            height: 2px;
+            background-color: #38bdf8; /* Jasny akcent */
+            margin: 0 auto 2.5rem;
         }
 
-        /* Cytat */
+        /* Cytat - Fancy & Magic */
+        .quote-container {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
         .quote {
-            font-size: 1.25rem;
-            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
             font-style: italic;
-            color: #4a5568;
-            margin-bottom: 2.5rem;
+            line-height: 1.5;
+            color: #1e3a8a; /* Ciemniejszy, magiczny niebieski */
+        }
+
+        .quote-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #64748b;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Przycisk (Call to Action) */
         .cta-button {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: #2b6cb0;
+            padding: 15px 40px;
+            background-color: #0369a1;
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px; /* Mniej zaokrąglony, bardziej architektoniczny */
             font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(43, 108, 176, 0.2);
+            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.3);
         }
 
         .cta-button:hover {
-            background-color: #2c5282;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(43, 108, 176, 0.3);
+            background-color: #075985;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(3, 105, 161, 0.4);
         }
 
         /* Animacja wejścia */
         .fade-in {
-            animation: fadeIn 1.2s ease-out;
+            animation: fadeIn 1.5s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <div class="container fade-in">
-        <h1>Paulina Godlewska</h1>
-        <div class="divider"></div>
-        <p class="quote">
-            "Twoja wizja zasługuje na najlepszą formę. <br>
-            Zmieńmy wspólnie pomysły w rzeczywistość, która zachwyca."
-        </p>
-        <a href="mailto:kontakt@przyklad.pl" class="cta-button">Zacznijmy współpracę</a>
+    <div class="bg-gradient"></div>
+    <div class="bg-image"></div>
+
+    <div class="main-wrapper">
+        <div class="container fade-in">
+            <h1>Paulina Godlewska</h1>
+            <p class="subtitle">Architekt wizjoner</p>
+            
+            <div class="divider"></div>
+            
+            <div class="quote-container">
+                <p class="quote">
+                    "Słowa są, moim niezbyt skromnym zdaniem,<br>
+                    naszym najbardziej niewyczerpanym źródłem magii."
+                </p>
+                <p class="quote-author">— Albus Dumbledore (w kontekście projektu)</p>
+            </div>
+            
+            <a href="mailto:kontakt@paulinagodlewska.pl" class="cta-button">Stwórzmy magię przestrzeni</a>
+        </div>
     </div>
 
 </body>
